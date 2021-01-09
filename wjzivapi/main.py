@@ -24,7 +24,6 @@ notes = sqlalchemy.Table(
 engine = sqlalchemy.create_engine(
     DATABASE_URL, # connect_args={"check_same_thread": False}
     check_same_thread=False,
-    sslmode='require'
 )
 metadata.create_all(engine)
 
