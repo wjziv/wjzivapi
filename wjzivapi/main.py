@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 # SQLAlchemy specific code, as with any other app (public)
-DATABASE_URL = "postgresql://doadmin:izx23kfmj5a9b913@db-postgresql-nyc1-88661-do-user-8514409-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require"
+DATABASE_URL = "postgresql://doadmin:izx23kfmj5a9b913@db-postgresql-nyc1-88661-do-user-8514409-0.b.db.ondigitalocean.com:25060/defaultdb"  # ?sslmode=require"
 
 database = databases.Database(DATABASE_URL)
 
@@ -24,7 +24,7 @@ notes = sqlalchemy.Table(
 engine = sqlalchemy.create_engine(
     DATABASE_URL, # connect_args={"check_same_thread": False}
     check_same_thread=False,
-    ssl='require'
+    sslmode='require'
 )
 metadata.create_all(engine)
 
