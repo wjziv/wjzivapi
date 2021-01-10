@@ -3,6 +3,9 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 # set path to our python api file
 ENV MODULE_NAME="wjzivapi.main"
 
+# copy cert
+COPY ca-certificate.crt ~/.postgresql/postgresql.crt
+
 # copy contents of project into docker
 COPY ./ /app
 
