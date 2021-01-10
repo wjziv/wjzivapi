@@ -3,7 +3,7 @@ from typing import List
 
 import databases
 import sqlalchemy
-from fastapi import FastAPI
+from fastapi import FastAPI, responses
 from pydantic import BaseModel
 
 # SQLAlchemy specific code, as with any other app
@@ -48,6 +48,11 @@ async def startup():
 @app.on_event("shutdown")
 async def shutdown():
     await database.disconnect()
+
+
+@app.get('/')
+async def index():
+    return responses.RedirectResponse(url='/docs')
 
 
 @app.get("/notes/", response_model=List[Note])
