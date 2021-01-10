@@ -27,11 +27,7 @@ engine = sqlalchemy.create_engine(
     DATABASE_URL,
     echo=True,
     pool_size=3,
-    max_overflow=0,
-    connect_args={
-        'sslmode': 'verify-full',
-        'sslrootcert': os.environ.get('CA_CERT')
-    }
+    max_overflow=0
 )
 metadata.create_all(engine)
 
