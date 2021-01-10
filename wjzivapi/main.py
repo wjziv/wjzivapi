@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 # SQLAlchemy specific code, as with any other app
-DATABASE_URL = os.environ.get('DEV_DATABASE_URL')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 database = databases.Database(DATABASE_URL)
 
