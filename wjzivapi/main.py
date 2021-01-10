@@ -23,7 +23,10 @@ notes = sqlalchemy.Table(
 
 # https://www.postgresql.org/docs/9.1/libpq-connect.html
 engine = sqlalchemy.create_engine(
-    DATABASE_URL
+    DATABASE_URL,
+    connect_args={
+        'sslmode': 'require',
+    }
 )
 metadata.create_all(engine)
 
