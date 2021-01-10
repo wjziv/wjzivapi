@@ -21,14 +21,8 @@ notes = sqlalchemy.Table(
     sqlalchemy.Column("completed", sqlalchemy.Boolean),
 )
 
-print('WJZIV', os.environ.get('CA_CERT', 'no-cert'))
 # https://www.postgresql.org/docs/9.1/libpq-connect.html
-engine = sqlalchemy.create_engine(
-    DATABASE_URL,
-    echo=True,
-    pool_size=3,
-    max_overflow=0
-)
+engine = sqlalchemy.create_engine(DATABASE_URL)
 metadata.create_all(engine)
 
 
