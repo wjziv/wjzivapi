@@ -3,7 +3,6 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 # set path to our python api file
 ENV MODULE_NAME="wjzivapi.main"
-ARG GUNICORN_CMD_ARGS="--ca-certs=./ca-certificate.crt"
 
 # copy contents of project into docker
 COPY ./ /app
@@ -18,5 +17,6 @@ RUN poetry config virtualenvs.create false
 RUN poetry install
 
 # add certificates
+COPY ./ca-certificate.crt ~/.postgresql/root.crt
 # RUN apk --no-cache add ca-certificates
 # RUN update-ca-certificates
