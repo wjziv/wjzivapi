@@ -1,10 +1,8 @@
+# setup py app
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 # set path to our python api file
 ENV MODULE_NAME="wjzivapi.main"
-
-# copy cert
-COPY ca-certificate.crt ~/.postgresql/postgresql.crt
 
 # copy contents of project into docker
 COPY ./ /app
@@ -17,3 +15,7 @@ RUN poetry config virtualenvs.create false
 
 # install dependencies
 RUN poetry install
+
+# add certificates
+FROM alpine
+RUN apk --no-cache add ca-certificates
