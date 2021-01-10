@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 import databases
@@ -5,8 +6,8 @@ import sqlalchemy
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-# SQLAlchemy specific code, as with any other app (public)
-DATABASE_URL = "postgresql://doadmin:izx23kfmj5a9b913@db-postgresql-nyc1-88661-do-user-8514409-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require"
+# SQLAlchemy specific code, as with any other app
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 database = databases.Database(DATABASE_URL)
 
