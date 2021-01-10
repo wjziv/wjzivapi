@@ -1,5 +1,5 @@
 # setup py app
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
 
 # set path to our python api file
 ENV MODULE_NAME="app.main"
