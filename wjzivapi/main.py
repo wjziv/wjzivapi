@@ -21,11 +21,11 @@ notes = sqlalchemy.Table(
     sqlalchemy.Column("completed", sqlalchemy.Boolean),
 )
 
-
+# https://www.postgresql.org/docs/9.1/libpq-connect.html
 engine = sqlalchemy.create_engine(
     DATABASE_URL,
     connect_args={
-        'ssl': 'require'
+        'sslmode': 'require'
     }
 )
 metadata.create_all(engine)
