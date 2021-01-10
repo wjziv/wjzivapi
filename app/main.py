@@ -27,7 +27,7 @@ engine = sqlalchemy.create_engine(
     DATABASE_URL,
     echo=True,
     connect_args={
-        'sslmode': 'verify-full'
+        'sslmode': 'verify-full',
         'sslrootcert': os.environ.get('CA_CERT')
     }
 )
