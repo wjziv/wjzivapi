@@ -15,7 +15,3 @@ RUN poetry config virtualenvs.create false
 
 # install dependencies
 RUN poetry install
-
-# add certificates
-# RUN apk --no-cache add ca-certificates
-# RUN update-ca-certificates
