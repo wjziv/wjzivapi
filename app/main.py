@@ -1,3 +1,4 @@
+import io
 import os
 from typing import List
 
@@ -26,7 +27,8 @@ engine = sqlalchemy.create_engine(
     DATABASE_URL,
     connect_args={
         'sslmode': 'require',
-        'sslcert': '/usr/local/share/ca-certificates/DO-PG-CA.crt'
+        # 'sslcert': '/usr/local/share/ca-certificates/DO-PG-CA.crt'
+        'sslcert': io.StringIO(os.environ.get('CA_CERT'))
     }
 )
 metadata.create_all(engine)
