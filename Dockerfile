@@ -15,7 +15,3 @@ RUN poetry config virtualenvs.create false
 
 # install dependencies
 RUN poetry install
-
-# copy in ca cert
-COPY ./certs/pgsql.crt ~/.postgresql/pgsql.crt
-RUN chmod 777 ~/.postgresql/pgsql.crt
