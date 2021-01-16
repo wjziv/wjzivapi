@@ -16,4 +16,7 @@ RUN poetry config virtualenvs.create false
 # install dependencies
 RUN poetry install
 
-COPY /app/certs/pgsql.crt ~/.postgresql/postgresql.crt
+RUN echo "test"
+RUN ls /home
+
+COPY ./certs/pgsql.crt ~/.postgresql/postgresql.crt
