@@ -7,7 +7,7 @@ COPY ./ /app
 WORKDIR /app
 EXPOSE $PORT
 
-RUN apk add --no-cache libressl-dev musl-dev libffi-dev
+RUN apk add --no-cache libressl-dev musl-dev libffi-dev build-base
 
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
