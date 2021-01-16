@@ -1,16 +1,13 @@
-FROM python:3.9-alpine
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-alpine3.10
+RUN apk add --no-cache libressl-dev musl-dev libffi-dev build-base
 
-ARG PORT=8080
-ENV PORT $PORT
+# set path to our python api file
+ENV MODULE_NAME="app.main"
 
 COPY ./ /app
-WORKDIR /app
-EXPOSE $PORT
-
-RUN apk add --no-cache libressl-dev musl-dev libffi-dev build-base
 
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install
 
-CMD uvicorn --host 0.0.0.0 --port $PORT main:app
+RUN apk --no-cache add ca-certificates
