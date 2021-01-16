@@ -48,6 +48,8 @@ app = FastAPI()
 
 @app.on_event("startup")
 async def startup():
+    print('app:', os.listdir('/app'))
+    print('cert:', os.listdir('/app/cert'))
     await database.connect()
 
 
