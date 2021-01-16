@@ -1,16 +1,14 @@
-FROM python:3.8-slim
+FROM python:3.9-alpine
 
-COPY ./ ./app
+ARG PORT=8080
+ENV PORT $PORT
 
-ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+COPY ./ /app
+WORKDIR /app
+EXPOSE $PORT
 
-COPY ./ssl/* /usr/local/share/ca-certificates/
+RUN pip install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install
 
-RUN update-ca-certificates
-
-RUN pip install -r requirements.txt
-
-EXPOSE 8080
-
-CMD [ "uvicorn", "main:app", "--host", "0.0.0.0"]
+CMD uvicorn --host 0.0.0.0 --port $PORT main:app
