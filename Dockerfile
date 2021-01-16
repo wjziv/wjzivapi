@@ -1,18 +1,16 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-alpine3.10
+FROM python:3.8-slim
 
-# set path to our python api file
-ENV MODULE_NAME="app.main"
+COPY ./ ./app
 
-# copy contents of project into docker
-COPY ./ /app
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
-# install poetry
-RUN pip install poetry
+COPY ./ssl/* /usr/local/share/ca-certificates/
 
-# disable virtualenv for peotry
-RUN poetry config virtualenvs.create false
+RUN update-ca-certificates
 
-# install dependencies
-RUN poetry install
+RUN pip install -r requirements.txt
 
-RUN apk --no-cache add ca-certificates
+EXPOSE 8000
+
+CMD [ "uvicorn", "main:app", "--host", "0.0.0.0"]
