@@ -11,7 +11,9 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install
 
-ADD ./certs/pgsql.crt /usr/local/share/ca-certificates/DO-PG-CA.crt
-RUN chmod 644 /usr/local/share/ca-certificates/DO-PG-CA.crt && update-ca-certificates
+#ADD ./certs/pgsql.crt /usr/local/share/ca-certificates/DO-PG-CA.crt
+ADD ./certs/pgsql.crt /usr/local/.postgresql/postgresql.crt
+#RUN chmod 644 /usr/local/share/ca-certificates/DO-PG-CA.crt && update-ca-certificates
+RUN chmod 644 /usr/local/.postgresql/postgresql.crt && update-ca-certificates
 
 #RUN apk --no-cache add ca-certificates
