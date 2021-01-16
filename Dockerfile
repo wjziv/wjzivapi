@@ -7,7 +7,7 @@ COPY ./ /app
 WORKDIR /app
 EXPOSE $PORT
 
-RUN sudo apt-get install build-essential libssl-dev libffi-dev python-dev
+RUN apk add --no-cache libressl-dev musl-dev libffi-dev
 
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
