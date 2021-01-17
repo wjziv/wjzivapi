@@ -17,4 +17,4 @@ RUN chmod 644 /usr/local/share/ca-certificates/DO-PG-CA.crt && update-ca-certifi
 #RUN apk --no-cache add ca-certificates
 
 #RUN apk add openssl
-RUN openssl req -nodes -newkey rsa:2048 -keyout /usr/local/share/ca-certificates/DO-PG-KY.key -out example.csr -subj $OPENSSL_INPUT
+# RUN openssl req -nodes -newkey rsa:2048 -keyout /usr/local/share/ca-certificates/DO-PG-KY.key -out example.csr -subj $OPENSSL_INPUT
