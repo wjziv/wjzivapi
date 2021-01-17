@@ -12,7 +12,7 @@ RUN poetry config virtualenvs.create false
 RUN poetry install
 
 ADD ./certs/postgresql.crt /usr/local/share/ca-certificates/postgresql.crt
-RUN chmod 644 /usr/local/share/ca-certificates/postgresql.crt && update-ca-certificates
+RUN chmod 600 /usr/local/share/ca-certificates/postgresql.crt && update-ca-certificates
 
 #RUN apk --no-cache add ca-certificates
 
