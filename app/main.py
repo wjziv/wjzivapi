@@ -27,7 +27,7 @@ engine = sqlalchemy.create_engine(
     connect_args={
         'sslmode': 'require',
         'sslcert': '/usr/local/share/ca-certificates/DO-PG-CA.crt',
-        'sslkey': '/usr/local/share/ca-certificates/DO-PG-KY.key'
+        'sslkey': '/usr/local/share/ca-certificates/DO-PG-KY.crt'
     }
 )
 metadata.create_all(engine)
