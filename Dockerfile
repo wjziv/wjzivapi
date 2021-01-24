@@ -1,5 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
-#-alpine3.10
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-alpine3.10
 #RUN apk add --no-cache libressl-dev musl-dev libffi-dev gcc
 
 # set path to our python api file
@@ -11,6 +10,7 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install
 
+RUN apk --no-cache add ca-certificates
 ADD ./certs/postgresql.crt /usr/local/share/ca-certificates/postgresql.crt
 RUN chmod 600 /usr/local/share/ca-certificates/postgresql.crt && update-ca-certificates
 
