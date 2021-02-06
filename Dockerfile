@@ -1,7 +1,7 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 
 # -slim
 # RUN apk add --no-cache libressl-dev musl-dev libffi-dev gcc
-RUN apt-get update && apt-get install gcc -y
+# RUN apt-get update && apt-get install gcc -y
 
 # set path to our python api file
 ENV MODULE_NAME="app.main"
@@ -12,7 +12,7 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install
 
-RUN apk --no-cache add ca-certificates
+# RUN apk --no-cache add ca-certificates
 ADD ./certs/postgresql.crt /usr/local/share/ca-certificates/postgresql.crt
 RUN chmod 600 /usr/local/share/ca-certificates/postgresql.crt && update-ca-certificates
 
