@@ -1,6 +1,6 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim-buster
 # RUN apk add --no-cache libressl-dev musl-dev libffi-dev gcc
-RUN apt-get update && apt-get install gcc postgresql-libs musl-dev -y
+RUN apt-get update && apt-get install gcc -y
 
 # set path to our python api file
 ENV MODULE_NAME="app.main"
