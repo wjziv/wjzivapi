@@ -1,5 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-alpine3.10
-RUN apk add --no-cache libressl-dev musl-dev libffi-dev gcc
+# RUN apk add --no-cache libressl-dev musl-dev libffi-dev gcc
 # RUN apk --update add --no-cache gcc
 
 # set path to our python api file
