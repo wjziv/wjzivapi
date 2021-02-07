@@ -58,7 +58,7 @@ async def shutdown():
 
 @app.get('/')
 async def index():
-    return responses.RedirectResponse(url='/docs')
+    return responses.JSONResponse(content={'message': 'THIS'})  # .RedirectResponse(url='/docs')
 
 
 @app.get("/notes/", response_model=List[Note])
