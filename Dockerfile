@@ -1,6 +1,6 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 RUN /usr/local/bin/python -m pip install --upgrade pip
-RUN apt install libpq-dev
+RUN apt install -y libpq-dev postgresql-server-dev-all
 
 ENV MODULE_NAME="app.main"
 
