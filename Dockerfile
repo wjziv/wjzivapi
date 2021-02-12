@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 RUN /usr/local/bin/python -m pip install --upgrade pip
 
 ENV MODULE_NAME="app.main"
