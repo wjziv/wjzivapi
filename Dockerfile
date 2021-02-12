@@ -1,6 +1,6 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 RUN /usr/local/bin/python -m pip install --upgrade pip
-RUN sudo apt install libpq-dev
+RUN apt install libpq-dev
 
 ENV MODULE_NAME="app.main"
 
