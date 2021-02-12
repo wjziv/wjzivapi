@@ -1,4 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
+RUN apt update -y && apt upgrade -y
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN apt install -y libpq-dev postgresql-server-dev-all
 
